@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  typecheck-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --legacy-peer-deps
+      - name: TypeScript check
+        run: npx tsc --noEmit
+      - name: Next.js build
+        env:
+          PAYLOAD_SECRET: ci-dummy-secret-thirty-two-chars-minimum-length
+          DATABASE_URI: postgresql://localhost/dummy
+        run: npm run build

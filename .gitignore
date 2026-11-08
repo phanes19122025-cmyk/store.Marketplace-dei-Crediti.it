@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.env
+.env.local
+.env*.local
+build/
+dist/
+*.tsbuildinfo
+media/
+.DS_Store
+src/payload-types.ts
+.vercel
+.railway
+*.log
+coverage/

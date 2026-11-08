@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm install --legacy-peer-deps && npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "functions": {
+    "src/app/(payload)/admin/**/*.tsx": { "maxDuration": 60, "memory": 1024 },
+    "src/app/(payload)/api/**/*.ts": { "maxDuration": 60, "memory": 1024 }
+  }
+}
